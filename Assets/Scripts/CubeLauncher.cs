@@ -32,8 +32,11 @@ public class CubeLauncher : MonoBehaviour
 
             while(currAmount < amount)
             {
-                DoCubeSpawn();
-                currAmount++;
+                if(TimeManager.Instance.ReversingTime == false)
+                {
+                    DoCubeSpawn();
+                    currAmount++;
+                }
                 yield return new WaitForSeconds(secondsBetweenCubes);
             }
         }
@@ -41,7 +44,10 @@ public class CubeLauncher : MonoBehaviour
         {
             while(true)
             {
-                DoCubeSpawn();
+                if(TimeManager.Instance.ReversingTime == false)
+                {
+                    DoCubeSpawn();
+                }
                 yield return new WaitForSeconds(secondsBetweenCubes);
             }
         }

@@ -7,11 +7,16 @@ public class TimeManager : MonoBehaviour
     public static TimeManager Instance {get; private set; }
     [SerializeField] float startingTimeScale = 1f;
     [SerializeField] float slowDownTimeScale = 0.5f;
+    [SerializeField] float timeStopSlowDownStepSpeed = 0.05f;
 
     [Header("Debug")]
-    [SerializeField] bool stopTime;
-    [SerializeField] bool slowDownTime;
-    public bool timeReverse;
+    [SerializeField] bool debug;
+    [ReadOnly, SerializeField] bool stoppingTime;
+    [ReadOnly, SerializeField] bool slowingDownTime;
+    [ReadOnly, SerializeField] bool reversingTime;
+    public bool ReversingTime => reversingTime;
+
+    Coroutine timestopCoroutine;
 
     private void Awake()
     {
@@ -21,19 +26,93 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        if(stopTime)
+        if(debug)
         {
-            Time.timeScale = 0;
+            if(stoppingTime)
+            {
+                Time.timeScale = 0;
+            }
+            else if(slowingDownTime)
+            {
+                Time.timeScale = slowDownTimeScale;
+            }
+            else
+            {
+                Time.timeScale = startingTimeScale;
+            }
         }
-        else if(slowDownTime)
+        
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
+    }
+
+    public void StopTime()
+    {
+        timestopCoroutine = StartCoroutine(DoTimeStop());
+        stoppingTime = true;
+    }
+
+    public void ResetTimeStop()
+    {
+        Time.timeScale = startingTimeScale;
+        StopCoroutine(timestopCoroutine);
+        stoppingTime = false;
+    }
+
+    IEnumerator DoTimeStop()
+    {
+        while(true)
         {
-            Time.timeScale = slowDownTimeScale;
+            if(Time.timeScale <= 0)
+            {
+                yield break;
+            }
+
+            if(Time.timeScale - timeStopSlowDownStepSpeed < 0)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = Time.timeScale - timeStopSlowDownStepSpeed;
+            }
+            
+            yield return new WaitForEndOfFrame();
         }
-        else
+    }
+
+    public void SlowTime()
+    {
+        Time.timeScale = slowDownTimeScale;
+        slowingDownTime = true;
+    }
+
+    public void ResetTimeSlow()
+    {
+        Time.timeScale = startingTimeScale;
+        slowingDownTime = false;
+    }
+
+    public void ReverseTime()
+    {
+        TimeBody[] timeBodies = GameObject.FindObjectsOfType<TimeBody>();
+
+        foreach(TimeBody timeBody in timeBodies)
         {
-            Time.timeScale = startingTimeScale;
+            timeBody.StartRewind();
         }
 
-        Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        reversingTime = true;
+    }
+
+    public void ResetTimeReverse()
+    {
+        TimeBody[] timeBodies = GameObject.FindObjectsOfType<TimeBody>();
+
+        foreach(TimeBody timeBody in timeBodies)
+        {
+            timeBody.StopRewind();
+        }
+
+        reversingTime = false;
     }
 }
