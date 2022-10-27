@@ -7,14 +7,29 @@ public class TimeBody : MonoBehaviour
     [SerializeField, ReadOnly] bool isRewinding;
     public bool IsRewinding => isRewinding;
 
+    [Space(15)]
+    [SerializeField] bool overrideRecordTime;
     [SerializeField] float recordTime = 6f;
+    
     List<PointInTime> pointsInTime;
+
     Rigidbody rb;
 
     Coroutine lastRewindRoutine = null;
 
+    float currentRecordTime;
+
     private void Awake()
     {
+        if(overrideRecordTime)
+        {
+            currentRecordTime = recordTime;
+        }
+        else
+        {
+            currentRecordTime = TimeManager.Instance.GlobalRecordTime;
+        }
+
         pointsInTime = new List<PointInTime>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine(DoRecord());
@@ -88,7 +103,7 @@ public class TimeBody : MonoBehaviour
 
     private void Record()
     {
-        if(pointsInTime.Count > Mathf.Round(recordTime / Time.fixedDeltaTime))
+        if(pointsInTime.Count > Mathf.Round(currentRecordTime / Time.fixedDeltaTime))
         {
             pointsInTime.RemoveAt(pointsInTime.Count - 1);
         }
