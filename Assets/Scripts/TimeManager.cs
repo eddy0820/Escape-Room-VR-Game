@@ -25,12 +25,15 @@ public class TimeManager : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] bool debug;
+    [ReadOnly] public TimeManipulationModes currentTimeManipulationMode;
     [ReadOnly, SerializeField] bool stoppingTime;
+    public bool StoppingTime => stoppingTime;
     [ReadOnly, SerializeField] bool slowingDownTime;
+    public bool SlowingDownTime => slowingDownTime;
     [ReadOnly, SerializeField] bool canSlowTime;
     [ReadOnly, SerializeField] bool reversingTime;
-    [ReadOnly, SerializeField] bool canReverseTime;
     public bool ReversingTime => reversingTime;
+    [ReadOnly, SerializeField] bool canReverseTime;
 
     Coroutine timestopCoroutine;
     Coroutine timeSlowCoroutine;
@@ -39,6 +42,7 @@ public class TimeManager : MonoBehaviour
     {
         Instance = this;
         Time.timeScale = startingTimeScale;
+        currentTimeManipulationMode = TimeManipulationModes.Stop;
         canSlowTime = true;
         canReverseTime = true;
     }
@@ -62,6 +66,51 @@ public class TimeManager : MonoBehaviour
         }
         
         Time.fixedDeltaTime = 0.02F * Time.timeScale;
+    }
+
+    public void ToggleTimeManipulation()
+    {
+        switch(currentTimeManipulationMode)
+        {
+            case TimeManipulationModes.Stop:
+
+                if(stoppingTime)
+                {
+                    ResetTimeStop();
+                }
+                else
+                {
+                    StopTime();
+                }
+                
+                break;
+
+            case TimeManipulationModes.Slow:
+
+                if(slowingDownTime)
+                {
+                    ResetTimeSlow();
+                }
+                else
+                {
+                    SlowTime();
+                }
+
+                break;
+
+            case TimeManipulationModes.Reverse:
+
+                if(reversingTime)
+                {
+                    ResetTimeReverse();
+                }
+                else
+                {
+                    ReverseTime();
+                }
+
+                break;
+        }
     }
 
     public void StopTime()
@@ -99,23 +148,15 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    public void ToggleSlowTime()
+    public void SlowTime()
     {
-        if(slowingDownTime)
+        if(canSlowTime)
         {
-           ResetTimeSlow();
+            Time.timeScale = slowDownTimeScale;
+            slowingDownTime = true;
+            timeSlowCoroutine = StartCoroutine(TimeSlowDownTimer());
+            canSlowTime = false;
         }
-        else
-        {
-            if(canSlowTime)
-            {
-                Time.timeScale = slowDownTimeScale;
-                slowingDownTime = true;
-                timeSlowCoroutine = StartCoroutine(TimeSlowDownTimer());
-                canSlowTime = false;
-            }
-        }
-        
     }
 
     public void ResetTimeSlow()
@@ -174,25 +215,18 @@ public class TimeManager : MonoBehaviour
         yield break;
     }
 
-    public void ToggleReverseTime()
+    public void ReverseTime()
     {
-        if(reversingTime)
+        if(canReverseTime)
         {
-            ResetTimeReverse();
-        }
-        else
-        {
-            if(canReverseTime)
+            TimeBody[] timeBodies = GameObject.FindObjectsOfType<TimeBody>();
+
+            foreach(TimeBody timeBody in timeBodies)
             {
-                TimeBody[] timeBodies = GameObject.FindObjectsOfType<TimeBody>();
-
-                foreach(TimeBody timeBody in timeBodies)
-                {
-                    timeBody.StartRewind();
-                }
-
-                reversingTime = true;
+                timeBody.StartRewind();
             }
+
+            reversingTime = true;
         }
     }
 
@@ -233,4 +267,11 @@ public class TimeManager : MonoBehaviour
         WristUIController.Instance.timeReverseCooldownText.text = "Cooldown: " + Mathf.Round(timer);
         yield break;
     }
+}
+
+public enum TimeManipulationModes
+{
+    Stop,
+    Slow,
+    Reverse
 }

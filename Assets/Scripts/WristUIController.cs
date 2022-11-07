@@ -7,6 +7,9 @@ public class WristUIController : MonoBehaviour
 {
     public static WristUIController Instance {get; private set; }
     [SerializeField] GameObject wristCanvas;
+    [SerializeField] GameObject timeStopScreen;
+    [SerializeField] GameObject timeSlowScreen;
+    [SerializeField] GameObject timeReverseScreen;
     public TextMeshProUGUI timeSlowTimeLeftText;
     public TextMeshProUGUI timeSlowCooldownText;
     public TextMeshProUGUI timeReverseCooldownText;
@@ -33,4 +36,72 @@ public class WristUIController : MonoBehaviour
             wristCanvas.SetActive(true);
         }
     }
+
+    public void SwitchTimeManipulationModeAndScreen(Vector2 input)
+    {
+        if(!TimeManager.Instance.StoppingTime && !TimeManager.Instance.SlowingDownTime && !TimeManager.Instance.ReversingTime)
+        {
+            if(Mathf.Abs(input.x) > 0.5)
+            {
+                if(input.x > 0)
+                {
+                    if(wristCanvas.activeInHierarchy)
+                        SwitchTimeManipulationModeAndScreenRight();
+                }
+                else
+                {
+                    if(wristCanvas.activeInHierarchy)
+                        SwitchTimeManipulationModeAndScreenLeft();
+                }
+            }
+        } 
+    }
+
+    private void SwitchTimeManipulationModeAndScreenLeft()
+    {
+        switch(TimeManager.Instance.currentTimeManipulationMode)
+        {
+            case TimeManipulationModes.Slow:
+                TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Stop;
+                DisableAllScreens();
+                timeStopScreen.SetActive(true);
+                break;
+            case TimeManipulationModes.Reverse:
+                TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Slow;
+                DisableAllScreens();
+                timeSlowScreen.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    private void SwitchTimeManipulationModeAndScreenRight()
+    {
+        switch(TimeManager.Instance.currentTimeManipulationMode)
+        {
+            case TimeManipulationModes.Stop:
+                TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Slow;
+                DisableAllScreens();
+                timeSlowScreen.SetActive(true);
+                break;
+            case TimeManipulationModes.Slow:
+                TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Reverse;
+                DisableAllScreens();
+                timeReverseScreen.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void DisableAllScreens()
+    {
+        timeStopScreen.SetActive(false);
+        timeSlowScreen.SetActive(false);
+        timeReverseScreen.SetActive(false);
+    }
+
+    
 }
