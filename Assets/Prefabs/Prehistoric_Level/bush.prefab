@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2355335816812363813}
   - component: {fileID: 525551421904123119}
   - component: {fileID: 8095045342784232183}
+  - component: {fileID: 3572062162511629782}
   m_Layer: 0
   m_Name: bush
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038967673834198330}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 88.84, y: 46.06, z: 368.8}
   m_LocalScale: {x: 450, y: 450, z: 375}
   m_ConstrainProportionsScale: 0
@@ -97,3 +98,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.016964482
   m_Center: {x: -0.0000000013969838, y: 0.0020641724, z: 0}
+--- !u!208 &3572062162511629782
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038967673834198330}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.017, y: 0.011000001, z: 0.017}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: 0}
+  m_TimeToStationary: 0.5
