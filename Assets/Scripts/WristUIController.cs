@@ -10,6 +10,8 @@ public class WristUIController : MonoBehaviour
     [SerializeField] GameObject timeStopScreen;
     [SerializeField] GameObject timeSlowScreen;
     [SerializeField] GameObject timeReverseScreen;
+    [SerializeField] GameObject timeSlowInfoScreen;
+    [SerializeField] GameObject timeReverseInfoScreen;
     public TextMeshProUGUI timeSlowTimeLeftText;
     public TextMeshProUGUI timeSlowCooldownText;
     public TextMeshProUGUI timeReverseCooldownText;
@@ -70,6 +72,7 @@ public class WristUIController : MonoBehaviour
                 TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Slow;
                 DisableAllScreens();
                 timeSlowScreen.SetActive(true);
+                timeSlowInfoScreen.SetActive(true);
                 break;
             default:
                 break;
@@ -85,11 +88,13 @@ public class WristUIController : MonoBehaviour
                 TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Slow;
                 DisableAllScreens();
                 timeSlowScreen.SetActive(true);
+                timeSlowInfoScreen.SetActive(true);
                 break;
             case TimeManipulationModes.Slow:
                 TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Reverse;
                 DisableAllScreens();
                 timeReverseScreen.SetActive(true);
+                timeReverseInfoScreen.SetActive(true);
                 break;
             default:
                 break;
@@ -101,6 +106,8 @@ public class WristUIController : MonoBehaviour
         timeStopScreen.SetActive(false);
         timeSlowScreen.SetActive(false);
         timeReverseScreen.SetActive(false);
+        timeSlowInfoScreen.SetActive(false);
+        timeReverseInfoScreen.SetActive(false);
     }
 
     

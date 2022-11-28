@@ -180,6 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95257732f30d9c6489832dcd5f7cf61f, type: 3}
+--- !u!1 &558604497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 352903463510781244, guid: e18f10bd3dd5c3942bf74738925a6b20, type: 3}
+  m_PrefabInstance: {fileID: 352903464750360835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +456,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_TeleportationProvider: {fileID: 1457751106}
+  m_TeleportationProvider: {fileID: 0}
   m_MatchOrientation: 0
   m_TeleportTrigger: 0
   m_Teleporting:
@@ -514,17 +519,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95257732f30d9c6489832dcd5f7cf61f, type: 3}
---- !u!114 &1457751106 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 352903463510781249, guid: e18f10bd3dd5c3942bf74738925a6b20, type: 3}
-  m_PrefabInstance: {fileID: 352903464750360835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1619275221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -742,6 +736,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4113272875006488484, guid: b6528dcd1f81bd5408b2811d7ecb84d4, type: 3}
+      propertyPath: rig
+      value: 
+      objectReference: {fileID: 558604497}
     - target: {fileID: 4113272875006488506, guid: b6528dcd1f81bd5408b2811d7ecb84d4, type: 3}
       propertyPath: m_Name
       value: TimeManager
