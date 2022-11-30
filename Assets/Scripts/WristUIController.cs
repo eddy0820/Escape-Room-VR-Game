@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class WristUIController : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class WristUIController : MonoBehaviour
     public TextMeshProUGUI timeSlowTimeLeftText;
     public TextMeshProUGUI timeSlowCooldownText;
     public TextMeshProUGUI timeReverseCooldownText;
+    [SerializeField] GameObject rightHandController;
+    XRRayInteractor rightHandRayInteractor;
+    LineRenderer rightHandLineRenderer;
+    XRInteractorLineVisual rightHandInteractorLineVisual;
+
 
     private void Awake()
     {
@@ -25,6 +31,12 @@ public class WristUIController : MonoBehaviour
         timeSlowTimeLeftText.text = "Time Left: " + Mathf.Round(TimeManager.Instance.SlowDownTimer);
         timeSlowCooldownText.text = "Cooldown: " + 0;
         timeReverseCooldownText.text = "Cooldown: " + 0;
+
+        rightHandRayInteractor = rightHandController.GetComponent<XRRayInteractor>();
+        rightHandInteractorLineVisual = rightHandController.GetComponent<XRInteractorLineVisual>();
+        rightHandLineRenderer = rightHandController.GetComponent<LineRenderer>();
+
+        DisableRightHandRay();
     }
 
     public void ToggleUI()
@@ -73,6 +85,7 @@ public class WristUIController : MonoBehaviour
                 DisableAllScreens();
                 timeSlowScreen.SetActive(true);
                 timeSlowInfoScreen.SetActive(true);
+                DisableRightHandRay();
                 break;
             default:
                 break;
@@ -95,6 +108,7 @@ public class WristUIController : MonoBehaviour
                 DisableAllScreens();
                 timeReverseScreen.SetActive(true);
                 timeReverseInfoScreen.SetActive(true);
+                EnableRightHandRay();
                 break;
             default:
                 break;
@@ -110,5 +124,17 @@ public class WristUIController : MonoBehaviour
         timeReverseInfoScreen.SetActive(false);
     }
 
-    
+    private void DisableRightHandRay()
+    {
+        rightHandRayInteractor.enabled = false;
+        rightHandInteractorLineVisual.enabled = false;
+        rightHandLineRenderer.enabled = false;
+    }
+
+    private void EnableRightHandRay()
+    {
+        rightHandRayInteractor.enabled = true;
+        rightHandInteractorLineVisual.enabled = true;
+        rightHandLineRenderer.enabled = true;
+    }
 }
