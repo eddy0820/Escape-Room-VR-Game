@@ -38,6 +38,9 @@ public class TimeManager : MonoBehaviour
     Coroutine timestopCoroutine;
     Coroutine timeSlowCoroutine;
 
+    GameObject currentlySelectedTimeReversalObject = null;
+
+
     private void Awake()
     {
         Instance = this;
@@ -100,14 +103,22 @@ public class TimeManager : MonoBehaviour
 
             case TimeManipulationModes.Reverse:
 
-                if(reversingTime)
+                if(currentlySelectedTimeReversalObject != null)
                 {
-                    ResetTimeReverse();
+                    ReverseTimeTargeted();
                 }
                 else
                 {
-                    ReverseTime();
+                    if(reversingTime)
+                    {
+                        ResetTimeReverse();
+                    }
+                    else
+                    {
+                        ReverseTime();
+                    }
                 }
+                
 
                 break;
         }
@@ -227,6 +238,18 @@ public class TimeManager : MonoBehaviour
             }
 
             reversingTime = true;
+            canReverseTime = false;
+        }
+    }
+
+    public void ReverseTimeTargeted()
+    {
+        if(canReverseTime)
+        {
+            currentlySelectedTimeReversalObject.GetComponent<IReversable>().DoRewind();
+
+            canReverseTime = false;
+            ResetTimeReverseTargeted();
         }
     }
 
@@ -241,6 +264,11 @@ public class TimeManager : MonoBehaviour
 
         reversingTime = false;
 
+        StartCoroutine(TimeReverseCooldown());
+    }
+
+    public void ResetTimeReverseTargeted()
+    {
         StartCoroutine(TimeReverseCooldown());
     }
 
@@ -266,6 +294,11 @@ public class TimeManager : MonoBehaviour
 
         WristUIController.Instance.timeReverseCooldownText.text = "Cooldown: " + Mathf.Round(timer);
         yield break;
+    }
+
+    public void SetCurrentTimeReversalObject(GameObject gameObj)
+    {
+        currentlySelectedTimeReversalObject = gameObj;
     }
 }
 
