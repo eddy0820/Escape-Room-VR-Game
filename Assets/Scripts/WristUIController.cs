@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
 
 public class WristUIController : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class WristUIController : MonoBehaviour
     public TextMeshProUGUI timeSlowCooldownText;
     public TextMeshProUGUI timeReverseCooldownText;
     [SerializeField] GameObject rightHandController;
+    [SerializeField] GameObject rightHandControllerInteractor;
+    [SerializeField] InputActionProperty rightHandSelectAction;
     XRRayInteractor rightHandRayInteractor;
     LineRenderer rightHandLineRenderer;
     XRInteractorLineVisual rightHandInteractorLineVisual;
@@ -86,6 +89,8 @@ public class WristUIController : MonoBehaviour
                 timeSlowScreen.SetActive(true);
                 timeSlowInfoScreen.SetActive(true);
                 DisableRightHandRay();
+                rightHandControllerInteractor.SetActive(true);
+                rightHandSelectAction.action.Enable();
                 break;
             default:
                 break;
@@ -109,6 +114,8 @@ public class WristUIController : MonoBehaviour
                 timeReverseScreen.SetActive(true);
                 timeReverseInfoScreen.SetActive(true);
                 EnableRightHandRay();
+                rightHandSelectAction.action.Disable();
+                rightHandControllerInteractor.SetActive(false);
                 break;
             default:
                 break;

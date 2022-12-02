@@ -14,11 +14,11 @@ TagManager:
   - Terrain
   - Player
   - Spear
-  - 
-  - 
-  - 
-  - 
-  - 
+  - KeyPiece2
+  - WalkTriggers
+  - KeyPiece
+  - BridgePiece
+  - Floor
   - 
   - 
   - 

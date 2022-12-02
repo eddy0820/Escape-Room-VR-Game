@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 262671337}
   - component: {fileID: 262671339}
   - component: {fileID: 262671340}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dino Chase End Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2833,7 +2833,7 @@ GameObject:
   - component: {fileID: 1680942986}
   - component: {fileID: 1680942988}
   - component: {fileID: 1680942989}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dino Chase Start Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
