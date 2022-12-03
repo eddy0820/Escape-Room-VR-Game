@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
@@ -17,6 +18,15 @@ public class WristUIController : MonoBehaviour
     public TextMeshProUGUI timeSlowTimeLeftText;
     public TextMeshProUGUI timeSlowCooldownText;
     public TextMeshProUGUI timeReverseCooldownText;
+    [SerializeField] Image timeStopIcon;
+    [SerializeField] Image timeSlowIcon;
+    [SerializeField] Image timeReverseIcon;
+    [SerializeField] Sprite timeStopNormal;
+    [SerializeField] Sprite timeSlowNormal;
+    [SerializeField] Sprite timeReverseNormal;
+    [SerializeField] Sprite timeStopGrayscale;
+    [SerializeField] Sprite timeSlowGrayscale;
+    [SerializeField] Sprite timeReverseGrayscale;
     [SerializeField] GameObject rightHandController;
     [SerializeField] GameObject rightHandControllerInteractor;
     [SerializeField] InputActionProperty rightHandSelectAction;
@@ -80,13 +90,17 @@ public class WristUIController : MonoBehaviour
         {
             case TimeManipulationModes.Slow:
                 TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Stop;
-                DisableAllScreens();
-                timeStopScreen.SetActive(true);
+                DisableInfoScreens();
+                DisableAllIcons();
+                timeStopIcon.sprite = timeStopNormal;
+                //timeStopScreen.SetActive(true);
                 break;
             case TimeManipulationModes.Reverse:
                 TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Slow;
-                DisableAllScreens();
-                timeSlowScreen.SetActive(true);
+                DisableInfoScreens();
+                DisableAllIcons();
+                timeSlowIcon.sprite = timeSlowNormal;
+                //timeSlowScreen.SetActive(true);
                 timeSlowInfoScreen.SetActive(true);
                 DisableRightHandRay();
                 rightHandControllerInteractor.SetActive(true);
@@ -104,14 +118,18 @@ public class WristUIController : MonoBehaviour
         {
             case TimeManipulationModes.Stop:
                 TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Slow;
-                DisableAllScreens();
-                timeSlowScreen.SetActive(true);
+                DisableInfoScreens();
+                DisableAllIcons();
+                timeSlowIcon.sprite = timeSlowNormal;
+                //timeSlowScreen.SetActive(true);
                 timeSlowInfoScreen.SetActive(true);
                 break;
             case TimeManipulationModes.Slow:
                 TimeManager.Instance.currentTimeManipulationMode = TimeManipulationModes.Reverse;
-                DisableAllScreens();
-                timeReverseScreen.SetActive(true);
+                DisableInfoScreens();
+                DisableAllIcons();
+                timeReverseIcon.sprite = timeReverseNormal;
+                //timeReverseScreen.SetActive(true);
                 timeReverseInfoScreen.SetActive(true);
                 EnableRightHandRay();
                 rightHandSelectAction.action.Disable();
@@ -127,8 +145,19 @@ public class WristUIController : MonoBehaviour
         timeStopScreen.SetActive(false);
         timeSlowScreen.SetActive(false);
         timeReverseScreen.SetActive(false);
+    }
+
+    private void DisableInfoScreens()
+    {
         timeSlowInfoScreen.SetActive(false);
         timeReverseInfoScreen.SetActive(false);
+    }
+
+    private void DisableAllIcons()
+    {
+        timeStopIcon.sprite = timeStopGrayscale;
+        timeSlowIcon.sprite = timeSlowGrayscale;
+        timeReverseIcon.sprite = timeReverseGrayscale;
     }
 
     private void DisableRightHandRay()
