@@ -27,6 +27,9 @@ public class WristUIController : MonoBehaviour
     [SerializeField] Sprite timeStopGrayscale;
     [SerializeField] Sprite timeSlowGrayscale;
     [SerializeField] Sprite timeReverseGrayscale;
+    public GameObject timeStopBackground;
+    public GameObject timeSlowBackground;
+    public GameObject timeReverseBackground;
     [SerializeField] GameObject rightHandController;
     [SerializeField] GameObject rightHandControllerInteractor;
     [SerializeField] InputActionProperty rightHandSelectAction;
@@ -158,6 +161,13 @@ public class WristUIController : MonoBehaviour
         timeStopIcon.sprite = timeStopGrayscale;
         timeSlowIcon.sprite = timeSlowGrayscale;
         timeReverseIcon.sprite = timeReverseGrayscale;
+    }
+
+    public void DisableAllBackgrounds()
+    {
+        timeStopBackground.SetActive(false);
+        timeSlowBackground.SetActive(false);
+        timeReverseBackground.SetActive(false);
     }
 
     private void DisableRightHandRay()

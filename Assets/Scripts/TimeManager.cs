@@ -40,6 +40,8 @@ public class TimeManager : MonoBehaviour
 
     GameObject currentlySelectedTimeReversalObject = null;
 
+    WristUIController wristUI;
+
 
     private void Awake()
     {
@@ -48,6 +50,7 @@ public class TimeManager : MonoBehaviour
         currentTimeManipulationMode = TimeManipulationModes.Stop;
         canSlowTime = true;
         canReverseTime = true;
+        wristUI = FindObjectOfType<WristUIController>();
     }
 
     private void Update()
@@ -128,6 +131,7 @@ public class TimeManager : MonoBehaviour
     {
         timestopCoroutine = StartCoroutine(DoTimeStop());
         stoppingTime = true;
+        wristUI.timeStopBackground.SetActive(true);
     }
 
     public void ResetTimeStop()
@@ -135,6 +139,7 @@ public class TimeManager : MonoBehaviour
         Time.timeScale = startingTimeScale;
         StopCoroutine(timestopCoroutine);
         stoppingTime = false;
+        wristUI.timeStopBackground.SetActive(false);
     }
 
     IEnumerator DoTimeStop()
@@ -167,6 +172,7 @@ public class TimeManager : MonoBehaviour
             slowingDownTime = true;
             timeSlowCoroutine = StartCoroutine(TimeSlowDownTimer());
             canSlowTime = false;
+            wristUI.timeSlowBackground.SetActive(true);
         }
     }
 
@@ -177,6 +183,7 @@ public class TimeManager : MonoBehaviour
         StopCoroutine(timeSlowCoroutine);
         WristUIController.Instance.timeSlowTimeLeftText.text = "Time Left: " + Mathf.Round(slowDownTimer);
         StartCoroutine(TimeSlowDownCooldown());
+        wristUI.timeSlowBackground.SetActive(false);
     }
 
     IEnumerator TimeSlowDownTimer()
@@ -239,6 +246,7 @@ public class TimeManager : MonoBehaviour
 
             reversingTime = true;
             canReverseTime = false;
+            wristUI.timeReverseBackground.SetActive(true);
         }
     }
 
@@ -265,6 +273,7 @@ public class TimeManager : MonoBehaviour
         reversingTime = false;
 
         StartCoroutine(TimeReverseCooldown());
+        wristUI.timeReverseBackground.SetActive(false);
     }
 
     public void ResetTimeReverseTargeted()
