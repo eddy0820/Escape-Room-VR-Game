@@ -22,15 +22,15 @@ public class ReversableBoulder : MonoBehaviour, IReversable
     IEnumerator LerpPosition()
     {
         float time = 0;
-        Vector3 startPosition = boulderOriginalPosition.position;
+        Vector3 startPosition = boulderOriginalPosition.localPosition;
         while (time < movementDuration)
         {
-            boulderOriginalPosition.position = Vector3.Lerp(startPosition, targetPosition.position, time / movementDuration);
+            boulderOriginalPosition.localPosition = Vector3.Lerp(startPosition, targetPosition.localPosition, time / movementDuration);
             time += Time.deltaTime;
             yield return null;
         }
 
-        transform.position = targetPosition.position;
+        boulderOriginalPosition.localPosition = targetPosition.localPosition;
 
         yield break;
     }
