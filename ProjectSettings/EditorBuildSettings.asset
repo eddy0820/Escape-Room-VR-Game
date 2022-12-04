@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/prehistoriclevel.unity
+    guid: 46d5d3ed688c837438012dcedc859ca0
+  - enabled: 1
+    path: Assets/Scenes/MedievalLevel.unity
+    guid: 15298dcec8e934940a0a42315b6690bc
+  - enabled: 1
+    path: Assets/Scenes/FuturisticLevel.unity
+    guid: 596a67ccf46646542a21059e65898b1e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 2fd944a7c9f85e743a162c2e623d4b75, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: e23ce35e30c8a77428c4d580ab64add3, type: 2}
