@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using Unity.XR.CoreUtils;
+
 
 public class TimeManager : MonoBehaviour
 {
@@ -42,6 +45,11 @@ public class TimeManager : MonoBehaviour
 
     WristUIController wristUI;
 
+    GameObject rig;
+    PlayQuickSound stopSound;
+    PlayQuickSound slowSound;
+    PlayQuickSound reverseSound;
+
 
     private void Awake()
     {
@@ -51,6 +59,10 @@ public class TimeManager : MonoBehaviour
         canSlowTime = true;
         canReverseTime = true;
         wristUI = FindObjectOfType<WristUIController>();
+        rig = FindObjectOfType<XROrigin>().gameObject;
+        stopSound = rig.transform.GetChild(0).GetChild(1).GetChild(2).GetComponent<PlayQuickSound>();
+        slowSound = rig.transform.GetChild(0).GetChild(1).GetChild(3).GetComponent<PlayQuickSound>();
+        reverseSound = rig.transform.GetChild(0).GetChild(1).GetChild(4).GetComponent<PlayQuickSound>();
     }
 
     private void Update()
@@ -87,6 +99,7 @@ public class TimeManager : MonoBehaviour
                 else
                 {
                     StopTime();
+                    stopSound.Play();
                 }
                 
                 break;
@@ -100,6 +113,7 @@ public class TimeManager : MonoBehaviour
                 else
                 {
                     SlowTime();
+                    slowSound.Play();
                 }
 
                 break;
@@ -109,6 +123,7 @@ public class TimeManager : MonoBehaviour
                 if(currentlySelectedTimeReversalObject != null)
                 {
                     ReverseTimeTargeted();
+                    reverseSound.Play();
                 }
                 else
                 {
@@ -119,6 +134,7 @@ public class TimeManager : MonoBehaviour
                     else
                     {
                         ReverseTime();
+                        reverseSound.Play();
                     }
                 }
                 

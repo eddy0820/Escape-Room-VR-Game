@@ -33,6 +33,7 @@ public class WristUIController : MonoBehaviour
     [SerializeField] GameObject rightHandController;
     [SerializeField] GameObject rightHandControllerInteractor;
     [SerializeField] InputActionProperty rightHandSelectAction;
+    
     XRRayInteractor rightHandRayInteractor;
     LineRenderer rightHandLineRenderer;
     XRInteractorLineVisual rightHandInteractorLineVisual;
@@ -83,6 +84,8 @@ public class WristUIController : MonoBehaviour
                     if(wristCanvas.activeInHierarchy)
                         SwitchTimeManipulationModeAndScreenLeft();
                 }
+
+                GetComponent<PlayQuickSound>().Play();
             }
         } 
     }

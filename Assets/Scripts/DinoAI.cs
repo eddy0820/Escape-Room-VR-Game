@@ -23,6 +23,7 @@ public class DinoAI : MonoBehaviour
     public void StartChase()
     {
         StartCoroutine(ChaseDelay());
+        GetComponent<PlayQuickSound>().Play();
     }
 
     public void EndChase()
