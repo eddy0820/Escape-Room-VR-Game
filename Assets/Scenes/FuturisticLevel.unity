@@ -2176,7 +2176,7 @@ GameObject:
   - component: {fileID: 419165402}
   - component: {fileID: 419165401}
   m_Layer: 0
-  m_Name: fruit
+  m_Name: Futuristic Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
