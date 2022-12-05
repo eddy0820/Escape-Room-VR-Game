@@ -1466,22 +1466,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5870898757132810067, guid: e44710c62bf11c14284ac48237958cea, type: 3}
-      propertyPath: m_MovementType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5870898757132810067, guid: e44710c62bf11c14284ac48237958cea, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2037845865}
     - target: {fileID: 5870898757132810070, guid: e44710c62bf11c14284ac48237958cea, type: 3}
       propertyPath: m_Name
       value: Futuristic Fruit
       objectReference: {fileID: 0}
-    - target: {fileID: 5870898757132810070, guid: e44710c62bf11c14284ac48237958cea, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6429644745665238575, guid: e44710c62bf11c14284ac48237958cea, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 2037845865}
+    - target: {fileID: 8060028368453767172, guid: e44710c62bf11c14284ac48237958cea, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 2037845865}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44710c62bf11c14284ac48237958cea, type: 3}
 --- !u!1001 &5516160024467563985
