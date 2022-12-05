@@ -2556,7 +2556,6 @@ GameObject:
   m_Component:
   - component: {fileID: 352903465304070759}
   - component: {fileID: 352903465304070762}
-  - component: {fileID: 352903465304070760}
   - component: {fileID: 352903465304070761}
   - component: {fileID: 2935867391632893767}
   - component: {fileID: 2160377511849919744}
@@ -2756,53 +2755,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 7779212132400271959, guid: a864b16d747118546968ad028edfa5c6, type: 3}
   m_ButtonPressPoint: 0.5
---- !u!114 &352903465304070760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352903465304070752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9e8550fb1b63704b81f415b1b7368f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_Name: Action
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 7b04f608-8803-4a90-bb54-161e35d9e813
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 9f86a30b-f419-4e83-99a9-eb671205a796
-      m_Path: <XRController>{LeftHand}/secondaryButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Action
-      m_Flags: 0
-    m_Flags: 0
-  OnPress:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 352903465304070761}
-        m_TargetAssemblyTypeName: WristUIController, Assembly-CSharp
-        m_MethodName: ToggleUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnRelease:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &352903465304070761
 MonoBehaviour:
   m_ObjectHideFlags: 0

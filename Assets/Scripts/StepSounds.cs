@@ -29,7 +29,7 @@ public class StepSounds : MonoBehaviour
             timer = soundClipTimer;
         }
 
-        if(character.velocity.magnitude > 0 && playSound)
+        if(character.velocity.magnitude > 1 && playSound)
         {
             AudioSource.PlayClipAtPoint(walkSound, transform.position);
         }

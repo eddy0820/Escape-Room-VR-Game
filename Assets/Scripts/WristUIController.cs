@@ -33,7 +33,7 @@ public class WristUIController : MonoBehaviour
     [SerializeField] GameObject rightHandController;
     [SerializeField] GameObject rightHandControllerInteractor;
     [SerializeField] InputActionProperty rightHandSelectAction;
-    
+
     XRRayInteractor rightHandRayInteractor;
     LineRenderer rightHandLineRenderer;
     XRInteractorLineVisual rightHandInteractorLineVisual;
@@ -43,7 +43,7 @@ public class WristUIController : MonoBehaviour
     {
         Instance = this;
 
-        wristCanvas.SetActive(false);
+        //wristCanvas.SetActive(false);
 
         timeSlowTimeLeftText.text = "Time Left: " + Mathf.Round(TimeManager.Instance.SlowDownTimer);
         timeSlowCooldownText.text = "Cooldown: " + 0;
