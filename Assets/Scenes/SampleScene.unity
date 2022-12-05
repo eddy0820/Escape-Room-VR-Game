@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516160023611438714, guid: 95257732f30d9c6489832dcd5f7cf61f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5516160023611438717, guid: 95257732f30d9c6489832dcd5f7cf61f, type: 3}
       propertyPath: m_RootOrder
@@ -472,6 +472,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torch
       objectReference: {fileID: 0}
+    - target: {fileID: 6102391596381652095, guid: 0c84c3e2740500741a4679537e9479dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6916364093663747781, guid: 0c84c3e2740500741a4679537e9479dd, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -714,7 +718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516160023611438714, guid: 95257732f30d9c6489832dcd5f7cf61f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5516160023611438717, guid: 95257732f30d9c6489832dcd5f7cf61f, type: 3}
       propertyPath: m_RootOrder
@@ -772,6 +776,10 @@ PrefabInstance:
     - target: {fileID: 3984553460776142112, guid: 51aacaa19cdd6f14ab849d8ff425e241, type: 3}
       propertyPath: m_Name
       value: Tree Reversible Medieval
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984553460776142112, guid: 51aacaa19cdd6f14ab849d8ff425e241, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4323502845722484634, guid: 51aacaa19cdd6f14ab849d8ff425e241, type: 3}
       propertyPath: m_RootOrder
@@ -889,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516160023611438714, guid: 95257732f30d9c6489832dcd5f7cf61f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5516160023611438717, guid: 95257732f30d9c6489832dcd5f7cf61f, type: 3}
       propertyPath: m_RootOrder
@@ -1145,6 +1153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Reversable
       objectReference: {fileID: 0}
+    - target: {fileID: 2201392924674480190, guid: 8fb1e1917964c234185ab371f046481f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5423458980252380708, guid: 8fb1e1917964c234185ab371f046481f, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -1161,6 +1173,10 @@ PrefabInstance:
     - target: {fileID: 5841273251165922002, guid: 4b3879f7f9a94434baa5bf5ced9335ce, type: 3}
       propertyPath: m_Name
       value: Medieval Fruit (Pear)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841273251165922002, guid: 4b3879f7f9a94434baa5bf5ced9335ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6510955733726279784, guid: 4b3879f7f9a94434baa5bf5ced9335ce, type: 3}
       propertyPath: m_RootOrder
@@ -1223,6 +1239,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prehistoric Fruit (Banana)
       objectReference: {fileID: 0}
+    - target: {fileID: 2432272078073206006, guid: ce753b5cfe7d5f54ea34b902c4567aa7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3065537640038649420, guid: ce753b5cfe7d5f54ea34b902c4567aa7, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1279,6 +1299,10 @@ PrefabInstance:
     - target: {fileID: 1644175588414766875, guid: a6d63f2b41d5d7e43857928b87c0b2f3, type: 3}
       propertyPath: m_Name
       value: Bridge Reversable New
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644175588414766875, guid: a6d63f2b41d5d7e43857928b87c0b2f3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2133184843371308449, guid: a6d63f2b41d5d7e43857928b87c0b2f3, type: 3}
       propertyPath: m_RootOrder
@@ -1454,6 +1478,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Futuristic Fruit
       objectReference: {fileID: 0}
+    - target: {fileID: 5870898757132810070, guid: e44710c62bf11c14284ac48237958cea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44710c62bf11c14284ac48237958cea, type: 3}
 --- !u!1001 &5516160024467563985
@@ -1469,7 +1497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516160023611438714, guid: 95257732f30d9c6489832dcd5f7cf61f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5516160023611438717, guid: 95257732f30d9c6489832dcd5f7cf61f, type: 3}
       propertyPath: m_RootOrder
@@ -1531,6 +1559,10 @@ PrefabInstance:
     - target: {fileID: 6587719827808789202, guid: d5e7fdae1130b674ab480602db487ba9, type: 3}
       propertyPath: m_Name
       value: Reversable Boulder Parent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587719827808789202, guid: d5e7fdae1130b674ab480602db487ba9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6587719827808789205, guid: d5e7fdae1130b674ab480602db487ba9, type: 3}
       propertyPath: m_RootOrder

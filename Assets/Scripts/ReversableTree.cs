@@ -6,6 +6,7 @@ public class ReversableTree : MonoBehaviour, IReversable
 {
     [SerializeField] GameObject brokenTree;
     [SerializeField] GameObject fixedTree;
+    [SerializeField] GameObject fruit;
     [SerializeField] float growthSpeed;
     [ReadOnly, SerializeField] bool activated;
 
@@ -24,6 +25,7 @@ public class ReversableTree : MonoBehaviour, IReversable
 
         brokenTree.SetActive(false);
         fixedTree.SetActive(true);
+        fruit.SetActive(true);
 
         yield break;
     }

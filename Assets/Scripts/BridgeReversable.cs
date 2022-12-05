@@ -91,6 +91,7 @@ public class BridgeReversable : MonoBehaviour, IReversable
             else if(Input.GetKeyDown(KeyCode.Return))
             {
                 isRecording = false;
+                positionsObject.ForceSerialization();
                 pointsInTimeHere = new List<PositionsObject.PointInTime>(positionsObject.pointsInTime);
             }
             else if(Input.GetKeyDown(KeyCode.Tab))

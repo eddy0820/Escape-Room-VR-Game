@@ -25,6 +25,13 @@ public class PositionsObject : ScriptableObject
             rotation = _rotation;
         }
     }
+
+    public void ForceSerialization()
+    {
+    #if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(this);
+    #endif
+    }
 }
 
 
