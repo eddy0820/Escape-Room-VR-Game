@@ -9,6 +9,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] string firstLevel;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject creditsMenu;
+    [SerializeField] GameObject howToPlayMenu;
 
     public void PlayGame()
     {
@@ -24,7 +25,14 @@ public class MainMenuController : MonoBehaviour
     public void MainMenu()
     {
         creditsMenu.SetActive(false);
+        howToPlayMenu.SetActive(false);
         mainMenu.SetActive(true);
+    }
+
+    public void HowToPlay()
+    {
+        mainMenu.SetActive(false);
+        howToPlayMenu.SetActive(true);
     }
 
     public void QuitGame()
